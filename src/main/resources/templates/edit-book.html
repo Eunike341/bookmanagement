@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Book</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<th:block th:if="${book.id}">
+    <h1>Edit Book</h1>
+    <p th:text="'Editing book with ID: ' + ${book.id}"></p>
+</th:block>
+
+<!-- You can also use th:else to specify an alternative content -->
+<th:block th:unless="${book.id != null and book.id != 0}">
+    <h1>Add New Book</h1>
+    <p>Adding a new book with the following attributes</p>
+</th:block>
+
+
+<div class="container">
+    <form th:action="@{${book.id != null ? '/bookmanagement/web/books/' + book.id : '/bookmanagement/web/books'}}" th:method="${book.id != null ? 'PATCH' : 'POST'}" th:object="${book}">
+        <h1>Book Details</h1>
+        <div class="book-details">
+            <label>Title:</label>
+            <input type="text" th:field="*{title}" />
+        </div>
+        <div class="book-details">
+            <label>Author:</label>
+            <input type="text" th:field="*{author}"/>
+        </div>
+        <div class="book-details">
+            <label>Price:</label>
+            <input type="text" th:field="*{price}"/>
+        </div>
+
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+<div>
+    <button type="button" onclick="listBook()">Back to Book List</button>
+</div>
+
+<script th:inline="javascript">
+    function listBook() {
+        window.location.href = '/bookmanagement/web/books';
+    }
+</script>
+
+</body>
+</html>

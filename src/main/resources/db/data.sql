@@ -1,0 +1,3 @@
+INSERT INTO book (title, author, price, create_date, update_date) VALUES ('Book 1', 'Author 1', 19.99, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO book (title, author, price, create_date, update_date) VALUES ('Book 2', 'Author 2', 29.99, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO book (title, author, price, create_date, update_date) VALUES ('Book 3', 'Author 3', 39.99, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);

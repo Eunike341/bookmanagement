@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Book List</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<h1>Book List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.price}"></td>
+        <td>
+            <button type="button" th:onclick="'editBook(' + ${book.id} + ')'">Edit</button>
+            <br/>
+            <form th:action="@{/bookmanagement/web/books/{id}(id=${book.id})}" th:method="delete">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <button type="button" onclick="addBook()">Add New Book</button>
+</div>
+
+<script th:inline="javascript">
+    function editBook(bookId) {
+        window.location.href = '/bookmanagement/web/books/' + bookId + '/edit';
+    }
+
+    function addBook() {
+        window.location.href = '/bookmanagement/web/books/create';
+    }
+</script>
+</body>
+</html>
