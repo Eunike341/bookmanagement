@@ -11,8 +11,8 @@ public class WebService {
 
     private final WebClient webClient;
 
-    public WebService(WebClient.Builder webClient) {
-        this.webClient = webClient.baseUrl("http://localhost:8080").build();
+    public WebService(WebClient.Builder webClientBuilder) {
+        this.webClient = webClientBuilder.baseUrl("http://localhost:8080").build();
     }
 
     public Flux<BookDto> fetchBooks() {
