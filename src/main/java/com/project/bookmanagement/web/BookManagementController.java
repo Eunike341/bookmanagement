@@ -33,7 +33,7 @@ public class BookManagementController {
         Mono<Void> mono = webService.deleteBook(bookId);
         mono.block();
         // Add a flash attribute to indicate successful deletion
-        redirectAttributes.addFlashAttribute("successMessage", "Book deleted successfully");
+        redirectAttributes.addFlashAttribute("message", "Book deleted successfully");
 
         // Redirect back to the list page
         return "redirect:/bookmanagement/web/books";
@@ -50,10 +50,11 @@ public class BookManagementController {
 
     @PatchMapping("/books/{id}")
     public Mono<String> editBook(@PathVariable("id") Long bookId, @ModelAttribute BookDto book, Model model) {
-        System.out.println("=====what's update book values?" + book.getAuthor()+", " + book.getTitle() + ", " + book.getPrice());
         Mono<BookDto> bookMono = webService.updateBook(bookId, book);
         return bookMono.map(bookDto -> {
+            System.out.println("=====map is called");
             model.addAttribute("book", bookDto);
+            model.addAttribute("message", "Update successful");
             return "edit-book";
         });
     }
@@ -66,10 +67,10 @@ public class BookManagementController {
 
     @PostMapping("/books")
     public Mono<String> createBook(@ModelAttribute BookDto book, Model model) {
-        System.out.println("=====what's new book values?" + book.getAuthor()+", " + book.getTitle() + ", " + book.getPrice());
         Mono<BookDto> bookMono = webService.createBook(book);
         return bookMono.map(bookDto -> {
             model.addAttribute("book", bookDto);
+            model.addAttribute("message", "Add successful");
             return "edit-book";
         });
     }

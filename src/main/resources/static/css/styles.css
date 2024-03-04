@@ -60,3 +60,38 @@ tr:nth-child(even) {
 .book-details p {
     margin: 5px 0;
 }
+
+.message-box {
+    background-color: #d4edda; /* Green for success message */
+    color: #155724; /* Text color for success message */
+    border: 1px solid #c3e6cb; /* Border color for success message */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.error-box {
+    background-color: #f8d7da; /* Red for error message */
+    color: #721c24; /* Text color for error message */
+    border: 1px solid #f5c6cb; /* Border color for error message */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #007bff; /* Blue background color */
+    color: #fff; /* White text color */
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue background color on hover */
+}

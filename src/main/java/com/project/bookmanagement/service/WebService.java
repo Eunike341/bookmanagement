@@ -36,7 +36,6 @@ public class WebService {
     }
 
     public Mono<BookDto> updateBook(Long bookId, BookDto updateValues) {
-        System.out.println("====call REST update values:" + updateValues.getTitle()+", author:" + updateValues.getAuthor()+", price:" + updateValues.getPrice());
         return webClient.patch()
                 .uri("bookmanagement/api/books/" + bookId)
                 .body(Mono.just(updateValues), BookDto.class )

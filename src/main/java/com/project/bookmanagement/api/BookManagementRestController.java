@@ -56,7 +56,7 @@ public class BookManagementRestController {
         Book book = new Book();
         book.setAuthor(bookDto.getAuthor());
         book.setTitle(bookDto.getTitle());
-        book.setPrice(new BigDecimal(bookDto.getPrice()));
+        book.setPrice(new BigDecimal(Double.toString(bookDto.getPrice())));
         return book;
     }
 }

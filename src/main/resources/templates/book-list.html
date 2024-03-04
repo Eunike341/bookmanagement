@@ -7,6 +7,9 @@
 </head>
 <body>
 <h1>Book List</h1>
+<div th:if="${message}" class="message-box">
+    <p th:text="${message}"></p>
+</div>
 <table>
     <thead>
     <tr>
